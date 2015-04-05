@@ -5,7 +5,7 @@ class CharCounter
 
       string.delete(' ').each_char do |c|
         result[c] = string.count c
-      end
+      end unless string.nil?
 
       result
     end
