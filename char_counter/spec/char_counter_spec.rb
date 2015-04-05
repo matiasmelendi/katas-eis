@@ -30,10 +30,10 @@ describe 'CharCounter' do
     dic.size.should be 4
   end
 
-  # it 'should return {} when string is empty' do
-  #   dic = CharCounter.count('')
-  #   dic.size.should be 0
-  # end
+  it 'should return {} when string is empty' do
+    dic = CharCounter.count('')
+    dic.size.should be 0
+  end
   #
   # it 'should return {} when string is nil' do
   #   dic = CharCounter.count(nil)
