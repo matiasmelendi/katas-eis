@@ -1,5 +1,5 @@
 language: ruby
 rvm:
   - 2.2.1
-sudo: required
-script: "./build_all.sh"
+sudo: true
+script: "sudo ./build_all.sh"
