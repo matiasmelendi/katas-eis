@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 2.2.1
 sudo: required
-script: "sudo ./build_all.sh"
+script: "./build_all.sh"
