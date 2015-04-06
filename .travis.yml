@@ -2,4 +2,5 @@ language: ruby
 rvm:
   - 2.2.1
 sudo: required
+before_script: "chmod +x build_all.sh"
 script: "./build_all.sh"
