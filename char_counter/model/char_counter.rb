@@ -10,12 +10,12 @@ class CharCounter
 
   private
 
-  def self.without_withe_spaces string
+  def self.without_white_spaces string
     string.delete(' ')
   end
 
   def self.count_chars hash, string
-    without_withe_spaces(string).each_char do |c|
+    without_white_spaces(string).each_char do |c|
       hash[c] = string.count c
     end
   end
