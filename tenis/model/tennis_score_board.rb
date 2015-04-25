@@ -1,6 +1,6 @@
 class TennisScoreBoard
 
   def scores
-    [0,0]
+    { sets: [0,0] }
   end
 end
