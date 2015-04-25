@@ -8,6 +8,8 @@ describe TennisScoreBoard do
     expect(score_board.scores[:sets]).to eq [0, 0]
   end
 
-
+  it "should start in 0-0 games" do
+    expect(score_board.scores[:games]).to eq [0, 0]
+  end
 
 end
