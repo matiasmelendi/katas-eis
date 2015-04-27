@@ -4,11 +4,13 @@ class MatchState
 
   attr_reader :points
   attr_reader :games
+  attr_reader :sets
 
   def initialize tennis_score_board
     @tennis_score_board = tennis_score_board
     @points = [@tennis_score_board.player_one.points, @tennis_score_board.player_two.points]
     @games = [@tennis_score_board.player_one.games, @tennis_score_board.player_two.games]
+    @sets = [@tennis_score_board.player_one.sets, @tennis_score_board.player_two.sets]
   end
 
   def self.state_for tennis_score_board
@@ -113,6 +115,7 @@ class WithWinningSetPossibility < MatchState
   def a_player_scored a_player
     @tennis_score_board.reset_games
     a_player.won_a_set
+    @tennis_score_board.recalculate_match_state
   end
 
   def winning_condition_for a_player

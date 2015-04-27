@@ -21,6 +21,10 @@ class TennisPlayer
     @score.games
   end
 
+  def sets
+    @score.sets
+  end
+
   def won_a_game
     @score.sum_game
   end

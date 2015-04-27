@@ -20,7 +20,7 @@ class TennisScoreBoard
   end
 
   def sets
-    [player_one.total_score.sets, player_two.total_score.sets]
+    @match_state.sets
   end
 
   def games
