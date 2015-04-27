@@ -26,7 +26,7 @@ class MatchState
   private
 
   def self.subclasses
-    [Deuce, WinningGamePossibility, CommonGame]
+    [Deuce, WithWinningPossibility, CommonGame]
   end
 
 end
@@ -55,19 +55,63 @@ class CommonGame < MatchState
 
 end
 
-class WinningGamePossibility < MatchState
+class WithWinningPossibility < MatchState
+
+  def initialize tennis_score_board
+    super
+    @winning_rules = self.class.winning_rules.select {|rule| rule.is_state_of? tennis_score_board}
+  end
+
+  def self.is_state_of? tennis_score_board
+    winning_rules.any? {|rule| rule.is_state_of? tennis_score_board }
+  end
+
+  def a_player_scored a_player
+    @winning_rules.each do |rule|
+      a_rule = rule.new_for(@tennis_score_board)
+      if a_rule.winning_condition_for a_player
+        a_rule.a_player_scored a_player
+      end
+    end
+  end
+
+  private
+
+  def self.winning_rules
+    [WithWinningGamePossibility, WithWinningSetPossibility]
+  end
+
+end
+
+class WithWinningGamePossibility < MatchState
 
   def self.is_state_of? tennis_score_board
     tennis_score_board.points.count(40) == 1
   end
 
   def a_player_scored a_player
-    if a_player.points == 40
-      a_player.won_a_game
-      @tennis_score_board.reset_points
-    else
-      @tennis_score_board.safe_player_scored a_player
-    end
+    a_player.won_a_game
+    @tennis_score_board.reset_points
+  end
+
+  def winning_condition_for a_player
+    a_player.points == 40
+  end
+
+end
+
+class WithWinningSetPossibility < MatchState
+
+  def self.is_state_of? tennis_score_board
+    tennis_score_board.games.count(5) > 0
+  end
+
+  def a_player_scored a_player
+    @tennis_score_board.reset_games
+  end
+
+  def winning_condition_for a_player
+    a_player.games == 6
   end
 
 end

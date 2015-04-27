@@ -45,6 +45,11 @@ class TennisScoreBoard
     player_two.points_reset
   end
 
+  def reset_games
+    player_one.games_reset
+    player_two.games_reset
+  end
+
   private
 
   def a_player_scored player

@@ -29,6 +29,10 @@ class TennisPlayer
     @score.points_reset
   end
 
+  def games_reset
+    @score.games_reset
+  end
+
   def total_score
     @score
   end

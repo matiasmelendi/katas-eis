@@ -27,4 +27,9 @@ class TennisScore
   def points_reset
     @points = ZeroPoints.new
   end
+
+  def games_reset
+    @games = ZeroGames.new
+  end
+
 end

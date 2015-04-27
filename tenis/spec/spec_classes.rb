@@ -9,9 +9,9 @@ end
 
 class TennisScoreTest < TennisScore
 
-  def initialize points
+  def initialize points, games = ZeroGames.new
     @points = points
-    @games = ZeroGames.new
+    @games = games
   end
 
 end
