@@ -40,6 +40,11 @@ class TennisScoreBoard
     recalculate_match_state
   end
 
+  def reset_points
+    player_one.points_reset
+    player_two.points_reset
+  end
+
   private
 
   def a_player_scored player

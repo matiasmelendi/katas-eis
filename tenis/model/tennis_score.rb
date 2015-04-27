@@ -9,7 +9,6 @@ class TennisScore
   end
 
   def score
-    @games = @games.next if @points.value == 40
     @points = @points.next
   end
 
@@ -21,4 +20,11 @@ class TennisScore
     @games.value
   end
 
+  def sum_game
+    @games = @games.next
+  end
+
+  def points_reset
+    @points = ZeroPoints.new
+  end
 end

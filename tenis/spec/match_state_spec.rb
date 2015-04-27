@@ -20,25 +20,9 @@ describe MatchState do
 
     end
 
-    context "when score board points are Advantage for a player" do
-
-      let(:score_p1) { TennisScoreTest.new FortyPoints.new }
-      let(:score_p2) { TennisScoreTest.new FortyPoints.new  }
-
-      before :each do
-        a_tennis_score_board.recalculate_match_state
-        a_tennis_score_board.player_one_scored
-      end
-
-      it "should return Deuce" do
-        expect(MatchState.state_for a_tennis_score_board).to be_instance_of Deuce
-      end
-
-    end
-
     context "when score board points are not 40-40" do
 
-      let(:score_p1) { TennisScoreTest.new FortyPoints.new }
+      let(:score_p1) { TennisScoreTest.new ThirtyPoints.new }
       let(:score_p2) { TennisScoreTest.new ThirtyPoints.new  }
 
       it "should return CommonGame" do

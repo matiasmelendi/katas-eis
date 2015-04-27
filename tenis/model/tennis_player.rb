@@ -21,6 +21,14 @@ class TennisPlayer
     @score.games
   end
 
+  def won_a_game
+    @score.sum_game
+  end
+
+  def points_reset
+    @score.points_reset
+  end
+
   def total_score
     @score
   end

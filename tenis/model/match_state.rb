@@ -26,7 +26,7 @@ class MatchState
   private
 
   def self.subclasses
-    [Deuce, CommonGame]
+    [Deuce, WinningGamePossibility, CommonGame]
   end
 
 end
@@ -51,6 +51,23 @@ class CommonGame < MatchState
 
   def a_player_scored a_player
     @tennis_score_board.safe_player_scored a_player
+  end
+
+end
+
+class WinningGamePossibility < MatchState
+
+  def self.is_state_of? tennis_score_board
+    tennis_score_board.points.count(40) == 1
+  end
+
+  def a_player_scored a_player
+    if a_player.points == 40
+      a_player.won_a_game
+      @tennis_score_board.reset_points
+    else
+      @tennis_score_board.safe_player_scored a_player
+    end
   end
 
 end
