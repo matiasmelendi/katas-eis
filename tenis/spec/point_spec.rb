@@ -109,3 +109,28 @@ describe FortyPoints do
   end
 
 end
+
+describe Advantage do
+
+  let!(:a_score) { TennisScoreTest.new FortyPoints.new  }
+  let!(:a_player) { TestPlayer.new "a_player", a_score }
+
+  let!(:point) { Advantage.new_for a_player }
+
+  describe "#value" do
+
+    it "should return Advantage for player" do
+      expect(point.value).to eq "Advantage for a_player"
+    end
+
+  end
+
+  describe "#next" do
+
+    it "should be zero points" do
+      expect(point.next).to be_instance_of ZeroPoints
+    end
+
+  end
+
+end

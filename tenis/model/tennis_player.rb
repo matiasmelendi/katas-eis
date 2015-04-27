@@ -2,7 +2,10 @@ require_relative 'tennis_score'
 
 class TennisPlayer
 
-  def initialize
+  attr_reader :name
+
+  def initialize name
+    @name = name
     @score = TennisScore.new
   end
 
@@ -12,6 +15,10 @@ class TennisPlayer
 
   def points
     @score.points
+  end
+
+  def games
+    @score.games
   end
 
   def total_score

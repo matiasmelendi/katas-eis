@@ -56,3 +56,23 @@ class FortyPoints < Point
   end
 
 end
+
+class Advantage < Point
+
+  def self.new_for a_player
+    new a_player
+  end
+
+  def initialize a_player
+    @player = a_player
+  end
+
+  def value
+    "Advantage for #{@player.name}"
+  end
+
+  def next
+    ZeroPoints.new
+  end
+
+end

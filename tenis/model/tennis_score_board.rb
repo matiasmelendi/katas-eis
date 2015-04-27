@@ -8,7 +8,7 @@ class TennisScoreBoard
   def initialize player_one, player_two
     @player_one = player_one
     @player_two = player_two
-    @match_state = CommonGame.new
+    @match_state = CommonGame.new_for self
   end
 
   def player_one_scored
@@ -24,22 +24,27 @@ class TennisScoreBoard
   end
 
   def games
-    [player_one.total_score.games, player_two.total_score.games]
+    @match_state.games
   end
 
   def points
-    [player_one.points, player_two.points]
+    @match_state.points
+  end
+
+  def recalculate_match_state
+    @match_state = MatchState.state_for self
+  end
+
+  def safe_player_scored player
+    player.score
+    recalculate_match_state
   end
 
   private
 
   def a_player_scored player
-    player.score
+    @match_state.a_player_scored player
     recalculate_match_state
-  end
-
-  def recalculate_match_state
-    @match_state = MatchState.state_for self
   end
 
 end

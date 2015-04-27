@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TennisPlayer do
 
-  let!(:player) { TennisPlayer.new }
+  let!(:player) { TennisPlayer.new "player" }
 
   context "when score ones" do
 

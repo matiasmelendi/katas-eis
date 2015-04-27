@@ -9,7 +9,8 @@ class TennisScore
   end
 
   def score
-   @points = @points.next
+    @games = @games.next if @points.value == 40
+    @points = @points.next
   end
 
   def points
