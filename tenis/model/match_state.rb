@@ -1,4 +1,5 @@
 require_relative 'subclass_resposability'
+require_relative 'unrecognized_match_state'
 
 class MatchState
 
@@ -14,7 +15,7 @@ class MatchState
   end
 
   def self.state_for tennis_score_board
-    subclasses.detect { |ms| ms.is_state_of? tennis_score_board }.new_for tennis_score_board
+    subclasses.detect(ifnone = lambda{ raise UnrecognizedMatchState })  { |ms| ms.is_state_of? tennis_score_board }.new_for tennis_score_board
   end
 
   def self.is_state_of? tennis_score_board
@@ -113,9 +114,8 @@ class WithWinningSetPossibility < MatchState
   end
 
   def a_player_scored a_player
-    @tennis_score_board.reset_games
     a_player.won_a_set
-    @tennis_score_board.recalculate_match_state
+    @tennis_score_board.reset_games
   end
 
   def winning_condition_for a_player

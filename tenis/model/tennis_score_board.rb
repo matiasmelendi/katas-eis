@@ -37,17 +37,22 @@ class TennisScoreBoard
 
   def safe_player_scored player
     player.score
+
     recalculate_match_state
   end
 
   def reset_points
     player_one.points_reset
     player_two.points_reset
+
+    recalculate_match_state
   end
 
   def reset_games
     player_one.games_reset
     player_two.games_reset
+
+    recalculate_match_state
   end
 
   def match_finished?
@@ -58,6 +63,7 @@ class TennisScoreBoard
 
   def a_player_scored player
     @match_state.a_player_scored player
+
     recalculate_match_state
   end
 

@@ -1,7 +1,5 @@
 class TennisScore
 
-  attr_reader :sets
-
   def initialize
     @points = ZeroPoints.new
     @games = ZeroGames.new
