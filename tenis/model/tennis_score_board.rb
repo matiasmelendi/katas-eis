@@ -50,6 +50,10 @@ class TennisScoreBoard
     player_two.games_reset
   end
 
+  def match_finished?
+    @match_state.finished?
+  end
+
   private
 
   def a_player_scored player

@@ -66,6 +66,26 @@ describe TennisScoreBoard do
 
   end
 
+  context "when a player wins the match " do
+
+    let!(:score_p1) { TennisScoreTest.new ThirtyPoints.new, OneGame.new, ZeroSets.new }
+    let!(:score_p2) { TennisScoreTest.new FortyPoints.new, FiveGames.new, OneSet.new  }
+
+    let!(:test_player_1) { TestPlayer.new "test_player_1", score_p1 }
+    let!(:test_player_2) { TestPlayer.new "test_player_2", score_p2 }
+
+    let!(:score_board) { TestTennisScoreBoard.new test_player_1, test_player_2 }
+
+    before :each do
+      score_board.player_two_scored
+    end
+
+    it "should wins the match" do
+      expect(score_board.match_finished?).to be_truthy
+    end
+
+  end
+
   context "when points are 40-40" do
 
     let!(:score_p1) { TennisScoreTest.new ThirtyPoints.new }

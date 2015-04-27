@@ -5,7 +5,7 @@ class TennisScore
   def initialize
     @points = ZeroPoints.new
     @games = ZeroGames.new
-    @sets = 0
+    @sets = ZeroSets.new
   end
 
   def score
@@ -20,8 +20,16 @@ class TennisScore
     @games.value
   end
 
+  def sets
+    @sets.value
+  end
+
   def sum_game
     @games = @games.next
+  end
+
+  def sum_set
+    @sets = @sets.next
   end
 
   def points_reset

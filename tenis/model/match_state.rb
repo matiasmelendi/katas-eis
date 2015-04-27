@@ -23,10 +23,14 @@ class MatchState
     new tennis_score_board
   end
 
+  def finished?
+    false
+  end
+
   private
 
   def self.subclasses
-    [Deuce, WithWinningPossibility, CommonGame]
+    [Finished, Deuce, WithWinningPossibility, CommonGame]
   end
 
 end
@@ -108,10 +112,31 @@ class WithWinningSetPossibility < MatchState
 
   def a_player_scored a_player
     @tennis_score_board.reset_games
+    a_player.won_a_set
   end
 
   def winning_condition_for a_player
     a_player.games == 6
+  end
+
+end
+
+class Finished < MatchState
+
+  def self.is_state_of? tennis_score_board
+    tennis_score_board.sets.count(2) == 1
+  end
+
+  def a_player_scored a_player
+
+  end
+
+  def winning_condition_for a_player
+    a_player.sets == 2
+  end
+
+  def finished?
+    true
   end
 
 end

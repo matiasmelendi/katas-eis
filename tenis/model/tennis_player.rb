@@ -25,6 +25,10 @@ class TennisPlayer
     @score.sum_game
   end
 
+  def won_a_set
+    @score.sum_set
+  end
+
   def points_reset
     @score.points_reset
   end
