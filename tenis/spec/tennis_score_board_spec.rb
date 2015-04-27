@@ -60,6 +60,10 @@ describe TennisScoreBoard do
       expect(score_board.games).to eq [0, 0]
     end
 
+    it "should reset points" do
+      expect(score_board.points).to eq [0, 0]
+    end
+
   end
 
   context "when points are 40-40" do
