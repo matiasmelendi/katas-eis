@@ -33,6 +33,7 @@ Bundler.require(:default, PADRINO_ENV)
 ##
 # Add your before (RE)load hooks here
 #
+=begin
 Padrino.before_load do
 end
 
@@ -44,3 +45,4 @@ Padrino.after_load do
 end
 
 Padrino.load!
+=end
