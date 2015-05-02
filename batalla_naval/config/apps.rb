@@ -4,7 +4,7 @@
 #
 #   Padrino.mount('blog').to('/blog')
 #   Padrino.mount('blog', :app_class => 'BlogApp').to('/blog')
-#   Padrino.mount('blog', :app_file =>  'path/to/blog/app.rb').to('/blog')
+#   Padrino.mount('blog', :app_file =>  'path/to/blog/batalla_naval.rb').to('/blog')
 #
 # You can also map apps to a specified host:
 #
@@ -33,4 +33,4 @@ Padrino.configure_apps do
 end
 
 # Mounts the core application for this project
-Padrino.mount('BatallaNaval::App', :app_file => Padrino.root('app/app.rb')).to('/')
+Padrino.mount('BatallaNaval::App', :app_file => Padrino.root('app/batalla_naval.rb')).to('/')
