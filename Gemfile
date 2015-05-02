@@ -14,3 +14,6 @@ gem 'simplecov', "0.8.0.pre"
 gem 'guard'
 gem 'guard-rspec'
 gem 'byebug'
+
+gem 'padrino'
+gem 'padrino-sprockets', :require => "padrino/sprockets"
