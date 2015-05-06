@@ -13,5 +13,9 @@ Given(/^I shoot to position “(\d+):(\d+)”$/) do |row, col|
 end
 
 Then(/^I get hit$/) do
-  expect(@result.hint?).to be_truthy
+  expect(@result.hit?).to be_truthy
+end
+
+Then(/^I get water$/) do
+  expect(@result.water?).to be_truthy
 end

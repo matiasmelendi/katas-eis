@@ -1,5 +1,8 @@
 require 'matrix'
 require_relative 'matrix'
+require_relative 'water'
+require_relative 'sink'
+require_relative 'hit'
 
 class BattleshipBoard
 
@@ -8,7 +11,7 @@ class BattleshipBoard
   end
 
   def initialize width, height
-    @board = Matrix.build(width, height) {|row, column| nil}
+    @board = Matrix.build(width, height) {|row, column| Water.new}
   end
 
   def columns
@@ -29,7 +32,7 @@ class BattleshipBoard
   end
 
   def empty_position? position
-   ship_at_position(position).nil?
+   ship_at_position(position).instance_of? Water
   end
 
   def ship_at_position position
@@ -37,10 +40,22 @@ class BattleshipBoard
   end
 
   def shoot_to_ship_at_position(position)
-    at_put(position, nil) unless empty_position?(position)
+    if empty_position?(position)
+      Water.new
+    else
+      ship = ship_at_position position
+      shoot_result_for_ship = shoot_result_for ship
+
+      at_put(position, shoot_result_for_ship)
+      Hit.new
+    end
   end
 
   private
+  def shoot_result_for ship
+    ShootResult.for_a_ship_in_a_board(ship, @board)
+  end
+
   def at_put position, ship
     row = position[0]
     col = position[1]
