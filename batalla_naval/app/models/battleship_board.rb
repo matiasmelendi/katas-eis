@@ -1,4 +1,5 @@
 require 'matrix'
+require_relative 'matrix'
 
 class BattleshipBoard
 
@@ -16,6 +17,14 @@ class BattleshipBoard
 
   def rows
     @board.row_vectors
+  end
+
+  def add_ship_in_position ship, position
+    @board[ position[0], position[1] ] = ship
+  end
+
+  def empty_position? position
+    @board.element(position[0], position[1]).nil?
   end
 
 end
