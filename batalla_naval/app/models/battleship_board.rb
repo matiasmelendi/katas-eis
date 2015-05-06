@@ -8,7 +8,7 @@ class BattleshipBoard
   end
 
   def initialize width, height
-    @board = Matrix.build(width, height) {|row, column| 0}
+    @board = Matrix.build(width, height) {|row, column| nil}
   end
 
   def columns
@@ -29,7 +29,7 @@ class BattleshipBoard
   end
 
   def empty_position? position
-   ship_at_position(position) == 0
+   ship_at_position(position).nil?
   end
 
   def ship_at_position position
