@@ -20,12 +20,12 @@ class BattleshipBoard
   end
 
   def add_small_ship_at_position ship, position
-    put_ship_on ship, position
+    at_put position, ship
   end
 
   def add_large_ship_at_position ship, position
-    put_ship_on ship, position
-    put_ship_on ship, (next_column_from position)
+    at_put position, ship
+    at_put (next_column_from position), ship
   end
 
   def empty_position? position
@@ -36,21 +36,22 @@ class BattleshipBoard
     @board.element(position[0], position[1])
   end
 
-  def destroy_ship_at_position(position)
-    ship = ship_at_position position
-
-    @board.each_with_index { |e, row, col|
-      @board[row, col] = nil if e.equal?(ship)
-    }
+  def shoot_to_ship_at_position(position)
+    at_put(position, nil) unless empty_position?(position)
   end
 
   private
-  def put_ship_on ship, position
-    @board[ position[0], position[1] ] = ship
+  def at_put position, ship
+    row = position[0]
+    col = position[1]
+
+    @board[row, col] = ship
   end
 
   def next_column_from position
-    position[1] = position[1] + 1
-    position
+    row = position[0]
+    col = position[1] + 1
+
+    [row, col]
   end
 end
