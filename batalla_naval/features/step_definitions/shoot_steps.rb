@@ -19,3 +19,7 @@ end
 Then(/^I get water$/) do
   expect(@result.water?).to be_truthy
 end
+
+Then(/^I get sink$/) do
+  expect(@result.sink?).to be_truthy
+end

@@ -56,7 +56,7 @@ describe "add_large_ship_at_position" do
   end
 end
 
-describe "destroy_ship_at_position" do
+describe "shoot_to_ship_at_position" do
 
   it "should leave the position empty if it's a small ship" do
     battleship_board = BattleshipBoard.new_with_dimension 5, 5
@@ -81,7 +81,7 @@ describe "destroy_ship_at_position" do
 
     battleship_board.shoot_to_ship_at_position position
 
-    expect(battleship_board.ship_at_position position).to be_instance_of Sink
+    expect(battleship_board.ship_at_position position).to be_instance_of Hit
     expect(battleship_board.empty_position? next_position).to be_falsey
   end
 

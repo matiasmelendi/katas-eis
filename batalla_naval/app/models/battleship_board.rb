@@ -32,7 +32,7 @@ class BattleshipBoard
   end
 
   def empty_position? position
-   ship_at_position(position).instance_of? Water
+   ship_at_position(position).instance_of?(Water)
   end
 
   def ship_at_position position
@@ -45,15 +45,8 @@ class BattleshipBoard
     else
       ship = ship_at_position position
       shoot_result_for_ship = shoot_result_for ship
-
-      at_put(position, shoot_result_for_ship)
-      Hit.new
+      shoot_result_for_ship.update_board_at_position(self, position)
     end
-  end
-
-  private
-  def shoot_result_for ship
-    ShootResult.for_a_ship_in_a_board(ship, @board)
   end
 
   def at_put position, ship
@@ -61,6 +54,11 @@ class BattleshipBoard
     col = position[1]
 
     @board[row, col] = ship
+  end
+
+  private
+  def shoot_result_for ship
+    ShootResult.for_a_ship_in_a_board(ship, @board)
   end
 
   def next_column_from position
