@@ -9,9 +9,9 @@ Given(/^I shoot to position “(\d+):(\d+)”$/) do |row, col|
   position = [row.to_i, col.to_i]
   @player = BattleshipPlayer.new
 
-  @player.shoot_to_position position, @board
+  @result = @player.shoot_to_position position, @board
 end
 
 Then(/^I get hit$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@result.hint?).to be_truthy
 end
