@@ -27,4 +27,8 @@ class BattleshipBoard
     @board.element(position[0], position[1]).nil?
   end
 
+  def ship_at_position position
+    @board.element(position[0], position[1])
+  end
+
 end

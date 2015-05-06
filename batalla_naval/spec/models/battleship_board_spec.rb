@@ -28,4 +28,14 @@ describe "add_ship_in_position" do
     expect(battleship_board.empty_position? position).to be_falsey
   end
 
+  it "should have the ship at the position" do
+    battleship_board = BattleshipBoard.new_with_dimension 5, 5
+    ship = SmallShip.new
+    position = [2, 2]
+
+    battleship_board.add_ship_in_position ship, position
+
+    expect(battleship_board.ship_at_position position).to eq ship
+  end
+
 end
