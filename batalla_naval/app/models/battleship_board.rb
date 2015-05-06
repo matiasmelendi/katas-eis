@@ -36,6 +36,14 @@ class BattleshipBoard
     @board.element(position[0], position[1])
   end
 
+  def destroy_ship_at_position(position)
+    ship = ship_at_position position
+
+    @board.each_with_index { |e, row, col|
+      @board[row, col] = nil if e.equal?(ship)
+    }
+  end
+
   private
   def put_ship_on ship, position
     @board[ position[0], position[1] ] = ship

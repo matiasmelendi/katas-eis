@@ -55,3 +55,19 @@ describe "add_large_ship_at_position" do
     expect(battleship_board.ship_at_position next_position).to eq ship
   end
 end
+
+describe "destroy_ship_at_position" do
+
+  it "should leave the position empty" do
+    battleship_board = BattleshipBoard.new_with_dimension 5, 5
+    ship = SmallShip.new
+    position = [2, 2]
+    battleship_board.add_small_ship_at_position ship, position
+
+    expect(battleship_board.empty_position? position).to be_falsey
+
+    battleship_board.destroy_ship_at_position position
+
+    expect(battleship_board.empty_position? position).to be_truthy
+  end
+end
