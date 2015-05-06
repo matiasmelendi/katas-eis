@@ -1,16 +1,28 @@
+def position_from string
+  string.split(':').map{|n| n.to_i }
+end
+
 Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
   @board = BattleshipBoard.new_with_dimension(rows.to_i, columns.to_i)
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |pos|
   @small_ship = SmallShip.new
-  position = pos.split(':').join.to_i
+  position = position_from pos
 
-  @board.add_ship_in_position @small_ship, position
+  @board.add_small_ship_at_position @small_ship, position
 end
 
 Then(/^position "(.*?)" is not empty$/) do |pos|
-  position = pos.split(':').join.to_i
+  position = position_from pos
 
   expect(@board.empty_position? position).to be_falsey
 end
+
+Given(/^I create a large ship in position "(.*?)"$/) do |pos|
+  @large_ship = LargeShip.new
+  position = position_from pos
+
+  @board.add_large_ship_at_position @large_ship, position
+end
+
