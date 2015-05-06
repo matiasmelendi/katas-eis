@@ -1,3 +1,3 @@
-Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |arg1, arg2|
-  @board = BattleshipBoard.new_with_dimension(5,5)
+Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
+  @board = BattleshipBoard.new_with_dimension(rows.to_i, columns.to_i)
 end
