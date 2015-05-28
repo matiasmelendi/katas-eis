@@ -1,5 +1,4 @@
 require 'matrix'
-require_relative 'matrix'
 require_relative 'water'
 require_relative 'sink'
 require_relative 'hit'
