@@ -1,8 +1,9 @@
 Given(/^a large ship in position: “(\d+):(\d+)”$/) do |row, col|
-  @large_ship = LargeShip.new
-  position = [row.to_i, col.to_i]
+  pos = "#{row}:#{col}"
 
-  @board.add_large_ship_at_position @large_ship, position
+  select("Large Ship", from: "ship")
+  select(pos, from: "position")
+  click_button "Add Ship"
 end
 
 Given(/^I shoot to position “(\d+):(\d+)”$/) do |row, col|
