@@ -14,4 +14,7 @@ class Water < ShootResult
     true
   end
 
+  def to_s
+    "Water"
+  end
 end

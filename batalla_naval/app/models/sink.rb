@@ -16,4 +16,8 @@ class Sink < ShootResult
     true
   end
 
+  def to_s
+    "Sink"
+  end
+
 end

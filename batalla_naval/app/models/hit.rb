@@ -15,4 +15,7 @@ class Hit < ShootResult
     true
   end
 
+  def to_s
+    "Hit"
+  end
 end
