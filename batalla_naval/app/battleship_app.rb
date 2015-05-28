@@ -39,6 +39,14 @@ module BatallaNaval
       redirect_to "/play"
     end
 
+    post :shoot, map: "/board/shoot" do
+      position = position_from(params[:shoot_position])
+
+      session[:shoot_result] = BattleshipPlayer.new.shoot_to_position(position, session[:board])
+
+      redirect_to "/play"
+    end
+
     private
     def position_from string
       string.split(':').map{|n| n.to_i }

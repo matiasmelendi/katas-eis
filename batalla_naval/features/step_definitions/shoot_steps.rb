@@ -7,14 +7,14 @@ Given(/^a large ship in position: “(\d+):(\d+)”$/) do |row, col|
 end
 
 Given(/^I shoot to position “(\d+):(\d+)”$/) do |row, col|
-  position = [row.to_i, col.to_i]
-  @player = BattleshipPlayer.new
+  pos = "#{row}:#{col}"
 
-  @result = @player.shoot_to_position position, @board
+  select(pos, from: "shoot_position")
+  click_button "Shoot"
 end
 
 Then(/^I get hit$/) do
-  expect(@result.hit?).to be_truthy
+  pending
 end
 
 Then(/^I get water$/) do

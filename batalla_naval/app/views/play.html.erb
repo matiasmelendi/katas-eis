@@ -17,6 +17,18 @@
 
     <%	end  %>
 
+
+  <h3> Shoot </h3>
+
+  <% form_tag "/board/shoot", method: :post do %>
+
+      <%= select_tag :shoot_position, options: @positions %>
+
+      <%= submit_tag "Shoot" %>
+
+  <% end  %>
+
+
   <div id="battleship-board">
 
     <table>
