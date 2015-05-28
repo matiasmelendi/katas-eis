@@ -15,7 +15,9 @@ gem 'rake'
 gem 'erubis'
 
 # Test requirements
-gem 'dm-postgres-adapter'
+group :staging, :production, :development, :test do
+  gem 'dm-postgres-adapter'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.5'
