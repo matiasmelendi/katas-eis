@@ -4,4 +4,8 @@ class LargeShip
     "Large Ship"
   end
 
+  def is_large_ship?
+    true
+  end
+
 end

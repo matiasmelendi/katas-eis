@@ -25,6 +25,14 @@ class BattleshipBoard
     @board.row_vectors
   end
 
+  def add_ship_at_position ship, position
+    if ship.is_large_ship?
+      add_large_ship_at_position ship, position
+    else
+      add_small_ship_at_position ship, position
+    end
+  end
+
   def add_small_ship_at_position ship, position
     at_put position, ship
   end
