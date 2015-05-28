@@ -14,6 +14,10 @@ class BattleshipBoard
     @board = Matrix.build(width, height) {|row, column| Water.new}
   end
 
+  def positions
+    create_positions_for columns.size, rows.size
+  end
+
   def columns
     @board.column_vectors
   end
@@ -67,6 +71,18 @@ class BattleshipBoard
 
     [row, col]
   end
+
+  def create_positions_for rows_size, columns_size
+    @positions = []
+    (0..columns_size - 1).each do |col|
+      (0..rows_size - 1).each do |row|
+        @positions.push("#{col}:#{row}")
+      end
+    end
+
+    @positions
+  end
+
 end
 
 #MonkeyPatch to allow me to use an assignment method

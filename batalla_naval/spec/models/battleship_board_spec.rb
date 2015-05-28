@@ -85,4 +85,27 @@ describe "shoot_to_ship_at_position" do
     expect(battleship_board.empty_position? next_position).to be_falsey
   end
 
+
+end
+
+describe "positions" do
+
+  context "with a normal board" do
+    battleship_board = BattleshipBoard.new_with_dimension 1, 2
+
+    it "should return a list with positions" do
+      expect(battleship_board.positions).to eq ["0:0", "0:1"]
+    end
+
+  end
+
+  context "with an empty board" do
+    battleship_board = BattleshipBoard.new_with_dimension 0, 0
+
+    it "should return an empty list of positions" do
+      expect(battleship_board.positions).to eq []
+    end
+
+  end
+
 end
