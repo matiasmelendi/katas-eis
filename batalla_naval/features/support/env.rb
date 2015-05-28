@@ -5,5 +5,5 @@ require 'rspec/expectations'
 
 require_relative '../../app/battleship_app'
 
-#Capybara.javascript_driver = :selenium
-#Capybara.app = BatallaNaval::BattleshipApp.tap { |app| }
+Capybara.javascript_driver = :selenium
+Capybara.app = BatallaNaval::BattleshipApp.tap { |app| }
