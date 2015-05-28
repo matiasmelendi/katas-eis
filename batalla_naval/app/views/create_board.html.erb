@@ -1,0 +1,13 @@
+
+<div align="center">
+
+  <h3> Battleship Board Create </h3>
+  <% form_tag "board/create", method: :post, class: "form-control" do %>
+
+      <%=	 number_field_tag :columns %>
+      <%=	 number_field_tag :rows %>
+      <%=	 submit_tag "Create Board" %>
+
+  <% end %>
+
+</div>

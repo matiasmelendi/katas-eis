@@ -3,7 +3,10 @@ def position_from string
 end
 
 Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
-  @board = BattleshipBoard.new_with_dimension(rows.to_i, columns.to_i)
+  visit "/"
+  fill_in "columns", with: columns
+  fill_in "rows", with: rows
+  click_button "Create Board"
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |pos|
