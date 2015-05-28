@@ -25,8 +25,23 @@ module BatallaNaval
     get "/play" do
       @ships = [SmallShip.new, LargeShip.new]
       @positions = session[:board].positions
+      session[:ships] = @ships
 
       render "play"
+    end
+
+    post :add_ship, map: "/board/add_ship" do
+      position = position_from(params[:position])
+      ship = session[:ships].at(params[:ship].to_i)
+
+      session[:board].add_ship_at_position ship, position
+
+      redirect_to "/play"
+    end
+
+    private
+    def position_from string
+      string.split(':').map{|n| n.to_i }
     end
 
   end

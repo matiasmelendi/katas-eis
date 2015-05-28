@@ -4,11 +4,38 @@
 
     <% form_tag "/board/add_ship", method: :post do %>
 
-      <%= select_tag :ship, options: @ships %>
+      <select name="ship">
+        <% @ships.each do |ship| %>
+            <option value="<%= @ships.index(ship) %>"> <%= ship %> </option>
+        <% end %>
+      </select>
+
+
       <%= select_tag :position, options: @positions %>
 
       <%= submit_tag "Add Ship" %>
 
     <%	end  %>
+
+  <div id="battleship-board">
+
+    <table>
+      <div class="row">
+
+        <%	 @positions.each do |position| %>
+            <tr>
+              <th>
+                <%= position %>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <%= session[:board].ship_at_position(position_from(position)) %>
+              </td>
+            </tr>
+        <% end %>
+      </div>
+    </table>
+  </div>
 
 </div>

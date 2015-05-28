@@ -10,14 +10,14 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |pos|
-
-  find("option[value='Small Ship']").click
-  find("option[value='#{pos}']").click
+  select("Small Ship", from: "ship")
+  select(pos, from: "position")
   click_button "Add Ship"
 end
 
 Then(/^position "(.*?)" is not empty$/) do |pos|
-  pending
+
+  expect(page).to_not have_content "#{pos} Water"
 end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |pos|
