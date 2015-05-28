@@ -22,5 +22,5 @@ Then(/^I get water$/) do
 end
 
 Then(/^I get sink$/) do
-  expect(@result.sink?).to be_truthy
+  expect(page).to have_content("#{@pos} Water")
 end
