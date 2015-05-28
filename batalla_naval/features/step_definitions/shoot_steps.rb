@@ -18,7 +18,7 @@ Then(/^I get hit$/) do
 end
 
 Then(/^I get water$/) do
-  expect(@result.water?).to be_truthy
+  expect(page).to have_content("#{@pos} Water")
 end
 
 Then(/^I get sink$/) do

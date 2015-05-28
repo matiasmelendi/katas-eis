@@ -8,7 +8,6 @@ Feature: Shoot
     Given I shoot to position “3:3”
     Then I get hit
 
-  @wip
   Scenario: Shoot and miss
     Given I shoot to position “3:2”
     Then I get water
