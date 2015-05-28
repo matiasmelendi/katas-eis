@@ -18,6 +18,15 @@ module BatallaNaval
     post :board_create, map: "/board/create" do
       @board = BattleshipBoard.new_with_dimension(params[:rows].to_i, params[:columns].to_i)
       session[:board] = @board
+
+      redirect_to "/play"
+    end
+
+    get "/play" do
+      @ships = [SmallShip.new, LargeShip.new]
+      @positions = session[:board].positions
+
+      render "play"
     end
 
   end

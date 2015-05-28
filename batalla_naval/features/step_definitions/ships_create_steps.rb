@@ -10,16 +10,14 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |columns, rows|
 end
 
 Given(/^I create a small ship in position "(.*?)"$/) do |pos|
-  @small_ship = SmallShip.new
-  position = position_from pos
 
-  @board.add_small_ship_at_position @small_ship, position
+  find("option[value='Small Ship']").click
+  find("option[value='#{pos}']").click
+  click_button "Add Ship"
 end
 
 Then(/^position "(.*?)" is not empty$/) do |pos|
-  position = position_from pos
-
-  expect(@board.empty_position? position).to be_falsey
+  pending
 end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |pos|

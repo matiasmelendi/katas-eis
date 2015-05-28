@@ -1,0 +1,14 @@
+<div>
+
+    <h3> Create a ship </h3>
+
+    <% form_tag "/board/add_ship", method: :post do %>
+
+      <%= select_tag :ship, options: @ships %>
+      <%= select_tag :position, options: @positions %>
+
+      <%= submit_tag "Add Ship" %>
+
+    <%	end  %>
+
+</div>
