@@ -21,9 +21,8 @@ Then(/^position "(.*?)" is not empty$/) do |pos|
 end
 
 Given(/^I create a large ship in position "(.*?)"$/) do |pos|
-  @large_ship = LargeShip.new
-  position = position_from pos
-
-  @board.add_large_ship_at_position @large_ship, position
+  select("Large Ship", from: "ship")
+  select(pos, from: "position")
+  click_button "Add Ship"
 end
 
